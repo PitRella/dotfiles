@@ -1,0 +1,15 @@
+docker-desktop
+google-chrome
+gxml
+jetbrains-toolbox
+joplin
+multimc-bin
+multimc-bin-debug
+ngrok
+planify
+postman-bin
+skypeforlinux-bin
+viber
+yay
+zoom
+zsh-theme-powerlevel10k-git
