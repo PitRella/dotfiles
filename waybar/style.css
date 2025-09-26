@@ -53,7 +53,7 @@ window#waybar {
     color: #2ac3de;
 }
 
-#clock, #backlight,#language, #custom-cava, #temperature, #bluetooth, #cpu, #pulseaudio, #network, #battery, #tray, #memory, #custom-playerctl {
+#clock, #backlight,#language, #custom-cava, #temperature, #bluetooth, #cpu, #pulseaudio, #network, #battery, #tray, #memory, #custom-playerctl, #window {
     border-radius: 10px;
     background-color: #191a24;
     color: #c0caf5;

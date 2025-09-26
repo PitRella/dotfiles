@@ -19,6 +19,13 @@
         "format": "{}",
         "exec": "~/.config/waybar/scripts/sound/expand cava-icon"
     },
+      "hyprland/window": {
+    "format": "{title}",
+    "max-length": 20,
+    "icon": true,
+    "icon-size": 14,
+    "separate-outputs": false
+  },
         "hyprland/language": {
         "format": "{}",
         "format-en": "🇺🇸",
@@ -48,18 +55,12 @@
              		"3": "3"
           }
     },
-    "clock":
-    {
-      "format": "<span color='#b69bf1'> </span> {:%H:%M}",
-      "format-alt": "<span foreground='#b69bf1'>📅 </span><span>{:%I:%M %p %a %d}</span>",
-      "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
-    },
-    "custom/cava":
-    {
-      "format": "<span color='#f7768e'></span> {volume}%",
-      "exec": "sh ~/.config/polybar/scripts/cava.sh" ,
-      "label": "%output%"
-    },
+      "clock": {
+    "format": "<b>{:%I:%M %p | %a.%d-%b}</b>",
+    // "format": "<b>{:%I:%M %p}</b>",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>"
+    // "on-click": "sleep 0.1 && swaync-client -t"
+  },
     "backlight":
     {
       "device": "amdgpu_b10",
@@ -68,7 +69,7 @@
     },
     "custom/sound":
     {
-      "format": " <span color='#5d7'> </span> {}",
+      "format": " <span color='#5d7'> </span> {}"
     },
     "bluetooth":
     {
@@ -84,7 +85,7 @@
     {
       "interface": "wlp3s0",
       "format": "{ifname}",
-      "format-wifi": "<span color='#90cdfa'> </span> {essid} ({signalStrength}%)",
+      "format-wifi": "<span color='#90cdfa'> </span> {essid}",
       "format-ethernet": "{ipaddr}/{cidr} ",
       "format-disconnected": "<span color='#ff005f'>󰖪 </span>No Network",
       "on-click": "kitty nmtui"
@@ -113,7 +114,7 @@
        "phone": "",
        "portable": "",
        "car": "",
-       "default": ["奔", "墳"]
+       "default": ["", "", ""]
     },
     "on-click-right" : "pavucontrol"
     },
@@ -137,9 +138,6 @@
     "critical-threshold": 80,
     "format": "<span foreground='#5d73ca'></span> {temperatureC}°C"
      },
-   "sway/language": {
-    "format": "{short} {variant}",
-},
     "custom/playerctl":
     {
      "format": "{icon}  <span>{}</span>",
