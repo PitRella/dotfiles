@@ -1,0 +1,160 @@
+{
+    // Theme settings
+    "icon_theme": "Catppuccin Macchiato",
+    "theme": "Catppuccin Frappé (Blur) [Heavy]",
+    "ui_font_size": 16,
+    "buffer_font_size": 14,
+    "buffer_font_family": "JetBrainsMono Nerd Font",
+
+    // Redactor settings
+    "vim_mode": false,
+    "autosave": "on_window_change",
+    "tab_size": 4,
+    "soft_wrap": "editor_width",
+    "show_whitespaces": "selection",
+    "cursor_blink": true,
+    // Additional settings
+    "relative_line_numbers": false,
+    "scroll_sensitivity": 0.7,
+
+    // Spaces and formatting
+    "hard_tabs": false,
+    "remove_trailing_whitespace_on_save": true,
+    "ensure_final_newline_on_save": true,
+    "use_autoclose": true,
+
+    // Terminal settings
+    "terminal": {
+        "font_size": 14,
+        "font_family": "JetBrainsMono Nerd Font",
+        "line_height": "comfortable",
+        "blinking": "off"
+    },
+
+    // File manages
+    "project_panel": {
+        "dock": "left",
+        "default_width": 240
+    },
+
+    // Git integration
+    "git": {
+        "git_gutter": "tracked_files",
+        "inline_blame": {
+            "enabled": true
+        }
+    },
+
+    // Tabs
+    "tabs": {
+        "git_status": true,
+        "file_icons": true
+    },
+
+    // Indent guides (rainbow spaces)
+    "indent_guides": {
+        "enabled": true,
+        "coloring": "indent_aware"
+    },
+
+    // Scrollbar
+    "scrollbar": {
+        "show": "auto"
+    },
+
+    // Telemetry
+    "telemetry": {
+        "diagnostics": false,
+        "metrics": false
+    },
+
+    // LSP settings
+    "lsp": {
+        "pyright": {
+            "settings": {
+                "python.analysis": {
+                    "typeCheckingMode": "basic",
+                    "autoSearchPaths": true,
+                    "useLibraryCodeForTypes": true
+                }
+            }
+        }
+    },
+
+    // Settings for language
+    "languages": {
+        "Python": {
+            "tab_size": 4,
+            "hard_tabs": false,
+            "formatter": {
+                "external": {
+                    "command": "black",
+                    "arguments": ["-"]
+                }
+            },
+            "format_on_save": "on",
+            "language_servers": ["pyright", "ruff"]
+        },
+        "JavaScript": {
+            "tab_size": 2,
+            "hard_tabs": false,
+            "formatter": {
+                "external": {
+                    "command": "prettier",
+                    "arguments": ["--stdin-filepath", "{buffer_path}"]
+                }
+            },
+            "format_on_save": "on"
+        },
+        "TypeScript": {
+            "tab_size": 2,
+            "hard_tabs": false,
+            "formatter": {
+                "external": {
+                    "command": "prettier",
+                    "arguments": ["--stdin-filepath", "{buffer_path}"]
+                }
+            },
+            "format_on_save": "on"
+        },
+        "JSON": {
+            "tab_size": 2,
+            "hard_tabs": false
+        },
+        "HTML": {
+            "tab_size": 2,
+            "formatter": {
+                "external": {
+                    "command": "prettier",
+                    "arguments": [
+                        "--stdin-filepath",
+                        "{buffer_path}",
+                        "--parser",
+                        "html"
+                    ]
+                }
+            },
+            "format_on_save": "on"
+        },
+        "CSS": {
+            "tab_size": 2,
+            "formatter": {
+                "external": {
+                    "command": "prettier",
+                    "arguments": [
+                        "--stdin-filepath",
+                        "{buffer_path}",
+                        "--parser",
+                        "css"
+                    ]
+                }
+            },
+            "format_on_save": "on"
+        },
+        "Rust": {
+            "tab_size": 4,
+            "formatter": "language_server",
+            "format_on_save": "on"
+        }
+    }
+}
