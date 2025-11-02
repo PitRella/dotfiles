@@ -1,0 +1,82 @@
+services:
+    nextcloud:
+        image: linuxserver/nextcloud:31.0.0
+        container_name: nextcloud
+        environment:
+            - PUID=5000
+            - PGID=5000
+            - TZ=Etc/UTC
+        volumes:
+            - ./volumes/nextcloud_config:/config
+            - ./volumes/nextcloud_data:/data
+            - /mnt/data/:/mnt/data
+        ports:
+            - 80:80
+        restart: unless-stopped
+        networks:
+            - nextcloud_network
+
+    nextcloud-db:
+        container_name: nextcloud-db
+        image: mariadb:10
+        restart: on-failure
+        volumes:
+            - ./volumes/nextcloud_mariadb_data:/var/lib/mysql
+        environment:
+            - MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}
+            - MARIADB_DATABASE=${MARIADB_DATABASE}
+            - MARIADB_USER=${MARIADB_USER}
+            - MARIADB_PASSWORD=${MARIADB_PASSWORD}
+        networks:
+            - nextcloud_network
+    jellyfin:
+        image: lscr.io/linuxserver/jellyfin:latest
+        container_name: jellyfin
+        environment:
+            - PUID=5000
+            - PGID=5000
+            - TZ=Etc/UTC
+        volumes:
+            - ./volumes/jellyfin/config:/config
+            - /mnt/data/torrent_downloads/series:/data/tvshows
+            - /mnt/data/torrent_downloads/movies:/data/movies
+        ports:
+            - 8096:8096
+        restart: unless-stopped
+    qbittorrent:
+        image: lscr.io/linuxserver/qbittorrent:latest
+        container_name: qbittorrent
+        environment:
+            - PUID=5000
+            - PGID=5000
+            - TZ=Etc/UTC
+            - WEBUI_PORT=8080
+            - TORRENTING_PORT=6881
+        volumes:
+            - ./volumes/qbittorrent_config/appdata:/config
+            - /mnt/data/torrent_downloads/movies:/downloads/movies
+            - /mnt/data/torrent_downloads/series:/downloads/series
+            - /mnt/data/torrent_downloads/other:/downloads/others
+        ports:
+            - 8080:8080
+            - 6881:6881
+            - 6881:6881/udp
+        restart: unless-stopped
+
+    #cloudflare:
+    #  image: cloudflare/cloudflared:latest
+    #  restart: unless-stopped
+    #  command: tunnel run
+    #  environment:
+    #    - TUNNEL_TOKEN=${TUNNEL_TOKEN}
+networks:
+    nextcloud_network:
+        driver: bridge
+
+volumes:
+    nextcloud_config:
+        driver: local
+    nextcloud_data:
+        driver: local
+    nextcloud_mariadb_data:
+        driver: localvolumes/
